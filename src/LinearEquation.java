@@ -39,17 +39,27 @@ public class LinearEquation {
     public String equation() {
         int y= y2-y1;
         int x= x2-x1;
+        String equation = "y = ";
         if (slope()==0.0) {
             if (yIntercept() < 0) {
-                return "y = " + "-" + (int)(Math.abs(yIntercept()));
+                return equation + "-" + (int)(Math.abs(yIntercept()));
             }
-            return "y = " + (int)(yIntercept());
+            return equation + (int) yIntercept();
         }
+
         if (y%x==0) {
+            if (slope()==1.0) {
+                if (yIntercept() < 0) {
+                    return equation + "x " + " - " + (Math.abs(yIntercept()));
+                } else if (yIntercept() > 0)
+                    return equation + "x" + " + " + yIntercept();
+                } else {
+                return equation + "x";
+            }
             if (yIntercept() < 0) {
-                return "y = " + (y)/(x) + "x" + " - " + Math.abs(yIntercept());
+                return equation + (int)(y/x) + "x" + " - " + Math.abs(yIntercept());
             } else if (yIntercept()==0) {
-                return "y = " + (y)/(x) + "x ";
+                return equation + (int)(y/x) + "x ";
             }
             return "y = " + (y)/(x) + "x" + " + " + yIntercept();
         }
@@ -57,19 +67,19 @@ public class LinearEquation {
             y=-(y);
             x=Math.abs(x);
             if (yIntercept()<0) {
-                return "y = " + y + "/" + x + "x " +  "- " + Math.abs(yIntercept());
+                return equation + y + "/" + x + "x " +  "- " + Math.abs(yIntercept());
             } else if (yIntercept()==0) {
-                return "y = " + y + "/" + x + "x ";
+                return equation + y + "/" + x + "x ";
             }
-            return "y = " + y + "/" + x + "x" + " + " + yIntercept();
+            return equation + y + "/" + x + "x" + " + " + yIntercept();
         }
         if (yIntercept()<0) {
-            return "y = " + y + "/" + x + "x " +  "- " + Math.abs(yIntercept());
+            return equation + y + "/" + x + "x " +  "- " + Math.abs(yIntercept());
         }
         if (yIntercept()==0) {
-            return "y = " + y + "/" + x + "x ";
+            return equation + y + "/" + x + "x ";
         }
-        return "y = " + y + "/" + x + "x" + " + " + yIntercept();
+        return equation + y + "/" + x + "x" + " + " + yIntercept();
     }
 
     public String lineInfo() {
